@@ -32,6 +32,21 @@
         .soft-shadow {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
+
+        .flash {
+            animation: flash 0.4s ease;
+        }
+
+        @keyframes flash {
+            0% {
+                background-color: transparent;
+                
+            }
+
+            100% {
+                background-color: transparent;
+            }
+        }
     </style>
 </head>
 
@@ -44,6 +59,19 @@
                 <h1 class="text-2xl font-bold text-gray-800 tracking-tight">แดชบอร์ดสรุป</h1>
                 <p class="text-gray-400 text-sm mt-1">การให้บริการต่าง ๆ</p>
             </div>
+
+            <div class="flex items-center gap-2 bg-white/50 px-3 py-2 rounded-lg border border-gray-200 shadow-sm">
+                <input type="date" id="start-date"
+                    class="text-sm px-2 py-1 rounded border border-gray-300 focus:outline-none focus:border-[#1e40af]">
+                <span class="text-gray-500 text-sm">-</span>
+                <input type="date" id="end-date"
+                    class="text-sm px-2 py-1 rounded border border-gray-300 focus:outline-none focus:border-[#1e40af]">
+                <button onclick="applyDateFilter()"
+                    class="bg-[#1e40af] hover:bg-blue-800 text-white text-sm px-3 py-1.5 rounded transition shadow-sm">ค้นหา</button>
+                <button onclick="clearDateFilter()" id="clear-btn"
+                    class="bg-gray-400 hover:bg-gray-500 text-white text-sm px-3 py-1.5 rounded transition hidden">ล้าง</button>
+            </div>
+
             <div class="text-right">
                 <p id="current-time" class="text-gray-600 font-semibold text-sm"></p>
                 <span id="status"
@@ -99,94 +127,98 @@
                     </svg>
                     <span class="text-xs">บริการส่งยา (Drug Delivery)</span>
                 </div>
-                <h2 class="text-3xl font-bold">-</h2>
+                <h2 id="drug-delivery" class="text-3xl font-bold">-</h2>
             </div>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-            <div
-                class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
-                <p class="text-sm mb-2 font-light">รวมผู้รับบริการ<br>ผู้ป่วยนอก</p>
-                <h3 id="custom-opd-total" class="text-4xl font-bold">-</h3>
-            </div>
-            <div
-                class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
-                <p class="text-sm mb-2 font-light">จำนวน ผู้รอรับบริการ<br>รอซักประวัติ</p>
-                <h3 id="waiting-screening" class="text-4xl font-bold">-</h3>
-            </div>
-            <div
-                class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
-                <p class="text-sm mb-2 font-light">จำนวน รอตรวจ</p>
-                <h3 id="waiting-exam" class="text-4xl font-bold">-</h3>
-            </div>
-            <div
-                class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
-                <p class="text-sm mb-2 font-light">จำนวน รอ Lab</p>
-                <h3 id="waiting-lab" class="text-4xl font-bold">-</h3>
-            </div>
-            <div
-                class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
-                <p class="text-sm mb-2 font-light">จำนวน รอ X-ray</p>
-                <h3 id="waiting-xray" class="text-4xl font-bold">-</h3>
-            </div>
-        </div>
+        <div id="secondary-content" class="transition-all duration-300">
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
-
-            <div
-                class="lg:col-span-5 bg-gradient-to-br from-teal-300 via-cyan-200 to-yellow-200 p-4 rounded-3xl shadow-md">
-                <div class="grid grid-cols-2 gap-4 h-full">
-                    <div
-                        class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
-                        <p class="text-xs font-light mb-1">ระยะเวลารอคอย เฉลี่ยรวม</p>
-                        <h3 class="text-3xl font-bold text-yellow-300"><span id="avg-wait-all">-</span><span
-                                class="text-sm ml-1 font-normal text-white">น.</span></h3>
-                    </div>
-                    <div
-                        class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
-                        <p class="text-xs font-light mb-1">ระยะเวลา รอซักประวัติ</p>
-                        <h3 class="text-3xl font-bold text-cyan-300"><span id="avg-wait-screening">-</span><span
-                                class="text-sm ml-1 font-normal text-white">น.</span></h3>
-                    </div>
-                    <div
-                        class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
-                        <p class="text-xs font-light mb-1">ระยะเวลา รอตรวจ</p>
-                        <h3 class="text-3xl font-bold text-cyan-300"><span id="avg-wait-exam-total">-</span><span
-                                class="text-sm ml-1 font-normal text-white">น.</span></h3>
-                    </div>
-                    <div
-                        class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
-                        <p class="text-xs font-light mb-1">ระยะเวลา รอรับยา</p>
-                        <h3 class="text-3xl font-bold text-emerald-300"><span id="avg-wait-pharmacy">-</span><span
-                                class="text-sm ml-1 font-normal text-white">น.</span></h3>
-                    </div>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+                <div
+                    class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
+                    <p class="text-sm mb-2 font-light">รวมผู้รับบริการ<br>ผู้ป่วยนอก</p>
+                    <h3 id="custom-opd-total" class="text-4xl font-bold">-</h3>
+                </div>
+                <div
+                    class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
+                    <p class="text-sm mb-2 font-light">จำนวน ผู้รอรับบริการ<br>รอซักประวัติ</p>
+                    <h3 id="waiting-screening" class="text-4xl font-bold">-</h3>
+                </div>
+                <div
+                    class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
+                    <p class="text-sm mb-2 font-light">จำนวน รอตรวจ</p>
+                    <h3 id="waiting-exam" class="text-4xl font-bold">-</h3>
+                </div>
+                <div
+                    class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
+                    <p class="text-sm mb-2 font-light">จำนวน รอ Lab</p>
+                    <h3 id="waiting-lab" class="text-4xl font-bold">-</h3>
+                </div>
+                <div
+                    class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
+                    <p class="text-sm mb-2 font-light">จำนวน รอ X-ray</p>
+                    <h3 id="waiting-xray" class="text-4xl font-bold">-</h3>
                 </div>
             </div>
 
-            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="flex flex-col">
-                    <div
-                        class="bg-[#51abbd] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center flex-grow text-center">
-                        <p class="text-sm mb-2 font-light">จำนวน รอรับยา</p>
-                        <h3 id="waiting-pharmacy" class="text-4xl font-bold">-</h3>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
+
+                <div
+                    class="lg:col-span-5 bg-gradient-to-br from-teal-300 via-cyan-200 to-yellow-200 p-4 rounded-3xl shadow-md">
+                    <div class="grid grid-cols-2 gap-4 h-full">
+                        <div
+                            class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
+                            <p class="text-xs font-light mb-1">ระยะเวลารอคอย เฉลี่ยรวม</p>
+                            <h3 class="text-3xl font-bold text-yellow-300"><span id="avg-wait-all">-</span><span
+                                    class="text-sm ml-1 font-normal text-white">น.</span></h3>
+                        </div>
+                        <div
+                            class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
+                            <p class="text-xs font-light mb-1">ระยะเวลา รอซักประวัติ</p>
+                            <h3 class="text-3xl font-bold text-cyan-300"><span id="avg-wait-screening">-</span><span
+                                    class="text-sm ml-1 font-normal text-white">น.</span></h3>
+                        </div>
+                        <div
+                            class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
+                            <p class="text-xs font-light mb-1">ระยะเวลา รอตรวจ</p>
+                            <h3 class="text-3xl font-bold text-cyan-300"><span id="avg-wait-exam-total">-</span><span
+                                    class="text-sm ml-1 font-normal text-white">น.</span></h3>
+                        </div>
+                        <div
+                            class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
+                            <p class="text-xs font-light mb-1">ระยะเวลา รอรับยา</p>
+                            <h3 class="text-3xl font-bold text-emerald-300"><span id="avg-wait-pharmacy">-</span><span
+                                    class="text-sm ml-1 font-normal text-white">น.</span></h3>
+                        </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col">
-                    <div
-                        class="bg-[#51abbd] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center flex-grow text-center">
-                        <p class="text-sm mb-2 font-light">จำนวน รอจ่ายเงิน</p>
-                        <h3 id="waiting-finance" class="text-4xl font-bold">-</h3>
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="flex flex-col">
+                        <div
+                            class="bg-[#51abbd] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center flex-grow text-center">
+                            <p class="text-sm mb-2 font-light">จำนวน รอรับยา</p>
+                            <h3 id="waiting-pharmacy" class="text-4xl font-bold">-</h3>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <div
+                            class="bg-[#51abbd] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center flex-grow text-center">
+                            <p class="text-sm mb-2 font-light">จำนวน รอจ่ายเงิน</p>
+                            <h3 id="waiting-finance" class="text-4xl font-bold">-</h3>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <div
+                            class="bg-[#30c978] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center flex-grow text-center">
+                            <p class="text-sm mb-2 font-light">จำนวน กลับบ้าน</p>
+                            <h3 id="go_home" class="text-4xl font-bold">-</h3>
+                        </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col">
-                    <div
-                        class="bg-[#30c978] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center flex-grow text-center">
-                        <p class="text-sm mb-2 font-light">จำนวน กลับบ้าน</p>
-                        <h3 id="go_home" class="text-4xl font-bold">-</h3>
-                    </div>
-                </div>
             </div>
 
         </div>
@@ -197,14 +229,49 @@
         const API_URL = "http://localhost:8000";
         const API_KEY = "";
 
+        let es = null; // ย้าย SSE มาเป็นตัวแปรภายนอกเพื่อให้ควบคุมการปิดได้
+        let isFilterMode = false; // ตัวแปรเช็คสถานะว่ากำลังดูข้อมูลย้อนหลังหรือไม่
+
         function formatWaitTime(minutes) {
-            // หากไม่มีข้อมูล ให้แสดงขีด (-) ไว้เพื่อประกอบกับคำว่า น. กลายเป็น -น.
-            if (minutes == null || isNaN(minutes) || minutes === 0) return "-";
+            if (minutes == null || isNaN(minutes)) return "-";
             if (minutes < 60) return Number(minutes).toFixed(1);
 
             const hrs = Math.floor(minutes / 60);
             const mins = Math.round(minutes % 60);
             return `${hrs} ชม. ${mins}`;
+        }
+
+        function animateValue(id, newValue) {
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            const oldValue = parseFloat(el.innerText) || 0;
+
+            if (oldValue === newValue) {
+                el.innerText = newValue;
+                return;
+            }
+
+            let start = oldValue;
+            const duration = 300;
+            const step = (newValue - start) / (duration / 16);
+
+            function update() {
+                start += step;
+
+                if ((step > 0 && start >= newValue) || (step < 0 && start <= newValue)) {
+                    el.innerText = newValue;
+                } else {
+                    el.innerText = Math.round(start);
+                    requestAnimationFrame(update);
+                }
+            }
+
+            update();
+
+            // flash effect
+            el.classList.add('flash');
+            setTimeout(() => el.classList.remove('flash'), 400);
         }
 
         /* =========================
@@ -220,21 +287,20 @@
             const room010 = rooms.find(r => r.room_code === '010');
 
             // อัปเดตตัวเลขรวม (แถว 1)
-            document.getElementById('opd-total').innerText = s?.total_OPD ?? 0;
-            document.getElementById('walk-in').innerText = s?.total_walkin ?? 0;
-            document.getElementById('telemed').innerText = s?.hos_telemed ?? 0;
+            animateValue('opd-total', s?.total_OPD ?? 0);
+            animateValue('walk-in', s?.total_walkin ?? 0);
+            animateValue('telemed', s?.hos_telemed ?? 0);
+            animateValue('drug-delivery', s?.hos_drug_delivery ?? 0);
 
-            // อัปเดตกล่องสีน้ำเงิน (แถว 2)
-            document.getElementById('custom-opd-total').innerText = h?.custom_opd_total ?? 0;
-            document.getElementById('waiting-screening').innerText = h?.waiting_screening ?? 0;
-            document.getElementById('waiting-exam').innerText = h?.waiting_exam ?? 0;
-            document.getElementById('waiting-lab').innerText = data?.technical_services?.lab?.waiting ?? 0;
-            document.getElementById('waiting-xray').innerText = data?.technical_services?.xray?.waiting ?? 0;
+            animateValue('custom-opd-total', h?.custom_opd_total ?? 0);
+            animateValue('waiting-screening', h?.waiting_screening ?? 0);
+            animateValue('waiting-exam', h?.waiting_exam ?? 0);
+            animateValue('waiting-lab', data?.technical_services?.lab?.waiting ?? 0);
+            animateValue('waiting-xray', data?.technical_services?.xray?.waiting ?? 0);
 
-            // โซนขวาล่าง: จำนวนรอรับยา จ่ายเงิน กลับบ้าน
-            document.getElementById('waiting-pharmacy').innerText = data?.technical_services?.pharmacy?.waiting ?? 0;
-            document.getElementById('waiting-finance').innerText = data?.technical_services?.finance?.waiting ?? 0;
-            document.getElementById('go_home').innerText = s?.hos_go_home ?? 0;
+            animateValue('waiting-pharmacy', data?.technical_services?.pharmacy?.waiting ?? 0);
+            animateValue('waiting-finance', data?.technical_services?.finance?.waiting ?? 0);
+            animateValue('go_home', s?.hos_go_home ?? 0);
 
             // โซนซ้ายล่าง: เวลารอคอย
             const waitScreening = room010?.avg_wait_minutes || 0;
@@ -255,6 +321,7 @@
         ========================= */
 
         async function loadSnapshot() {
+            if (isFilterMode) return;
             console.log("📦 [1/2] Loading Snapshot data...");
             try {
                 const res = await fetch(`${API_URL}/api/dashboard/snapshot`, {
@@ -273,12 +340,16 @@
 
         let eventCount = 0;
         function connectSSE() {
+            // หากอยู่ในโหมด Filter จะไม่ทำการเชื่อมต่อ SSE ใหม่
+            if (isFilterMode) return;
+
             console.log("📡 [2/2] Connecting to SSE Stream...");
 
             let url = `${API_URL}/api/dashboard/stream`;
             if (API_KEY) url += `?api_key=${API_KEY}`;
 
-            const es = new EventSource(url);
+            if (es) es.close(); // ปิดอันเก่าก่อนถ้ามี
+            es = new EventSource(url);
 
             es.onopen = () => {
                 console.log("🟢 SSE Connection Established");
@@ -298,11 +369,89 @@
             };
 
             es.onerror = () => {
+                if (isFilterMode || !es) return;
+
                 console.error("🔴 SSE Connection Lost");
                 setStatus("RECONNECTING", "bg-orange-100 text-orange-700");
+
                 es.close();
-                setTimeout(connectSSE, 3000);
+                es = null;
+
+                setTimeout(() => {
+                    if (!isFilterMode) connectSSE();
+                }, 3000);
             };
+        }
+
+        /* =========================
+           FILTER LOGIC
+        ========================= */
+        async function applyDateFilter() {
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+
+            if (!startDate || !endDate) {
+                alert('กรุณาเลือกวันที่ให้ครบถ้วน');
+                return;
+            }
+
+            isFilterMode = true;
+
+            // 1. ปิด SSE ทันที
+            if (es) {
+                es.close();
+                es = null;
+            }
+            setStatus("FILTERED (HISTORY)", "bg-purple-100 text-purple-700 font-bold");
+
+            // 2. ปรับ UI ส่วนล่างให้จางลง
+            document.getElementById('secondary-content').classList.add('opacity-30', 'grayscale', 'pointer-events-none');
+            document.getElementById('clear-btn').classList.remove('hidden');
+
+            // 3. เรียก API ดึงข้อมูลช่วงวันที่
+            try {
+                const res = await fetch(`${API_URL}/api/dashboard/summary-range?start_date=${startDate}&end_date=${endDate}`, {
+                    headers: API_KEY ? { "x-api-key": API_KEY } : {}
+                });
+                const responseData = await res.json();
+
+                // 4. อัปเดตข้อมูลแค่ 4 กล่องบนที่ได้จาก endpoint
+                const data = responseData.data;
+                document.getElementById('opd-total').innerText = data.opd_total ?? 0;
+                document.getElementById('walk-in').innerText = data.walk_in ?? 0;
+                document.getElementById('telemed').innerText = data.telemed ?? 0;
+                document.getElementById('drug-delivery').innerText = data.drug_delivery ?? 0;
+
+            } catch (err) {
+                console.error("❌ Filter fetch error:", err);
+                alert("เกิดข้อผิดพลาดในการดึงข้อมูลย้อนหลัง");
+            }
+        }
+
+        function clearDateFilter() {
+            isFilterMode = false;
+
+            // 1. ล้างค่า Input
+            document.getElementById('start-date').value = '';
+            document.getElementById('end-date').value = '';
+
+            // 2. คืนค่า UI
+            const container = document.getElementById('secondary-content');
+
+            container.classList.remove('opacity-30', 'grayscale', 'pointer-events-none');
+            container.classList.add('opacity-0');
+
+            document.getElementById('clear-btn').classList.add('hidden');
+            setStatus("Connecting...", "bg-gray-200 text-gray-800");
+
+            // 3. โหลดใหม่แบบมี transition
+            setTimeout(() => {
+                loadSnapshot();
+
+                // 👉 fade in กลับมา
+                container.classList.remove('opacity-0');
+                
+            }, 200);
         }
 
         /* =========================
@@ -310,12 +459,24 @@
         ========================= */
         function setStatus(text, color) {
             const el = document.getElementById('status');
+            if (!el) return;
             el.innerText = text;
             el.className = `text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider ${color}`;
         }
 
         setInterval(() => {
-            document.getElementById('current-time').innerText = new Date().toLocaleString('th-TH');
+            const now = new Date();
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+
+            const timeEl = document.getElementById('current-time');
+            if (timeEl) timeEl.innerText = now.toLocaleString('th-TH', options);
         }, 1000);
 
         loadSnapshot();
