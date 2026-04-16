@@ -166,6 +166,15 @@
         const API_URL = "http://localhost:8000";
         const API_KEY = "";
 
+        function formatWaitTime(minutes) {
+            if (minutes == null || isNaN(minutes)) return "0.0";
+            if (minutes < 60) return Number(minutes).toFixed(1); // ไม่ถึง 60 นาที แสดงทศนิยมตามเดิม
+            
+            const hrs = Math.floor(minutes / 60);
+            const mins = Math.round(minutes % 60);
+            return `${hrs} ชม. ${mins}`; 
+        }
+
         /* =========================
            UPDATE UI
         ========================= */
@@ -198,8 +207,8 @@
             document.getElementById('go_home').innerText = s?.hos_go_home ?? 0;
 
             // โซนซ้ายล่าง: เวลารอคอย
-            document.getElementById('avg-wait-screening').innerText = room010?.avg_wait_minutes?.toFixed(1) ?? "0.0";
-            document.getElementById('avg-wait-exam-total').innerText = data.summary?.avg_wait_examination?.toFixed(1) ?? "0.0";
+            document.getElementById('avg-wait-screening').innerText = formatWaitTime(room010?.avg_wait_minutes);
+            document.getElementById('avg-wait-exam-total').innerText = formatWaitTime(data.summary?.avg_wait_examination);
             
             // หมายเหตุ: ใช้ 062 มาแสดงในช่อง "เฉลี่ยรวม" ไว้ก่อน ถ้ามีค่าเฉลี่ยตัวอื่นสามารถมาเปลี่ยน ID ตรงนี้ได้
             document.getElementById('avg-wait-062').innerText = room062?.avg_wait_minutes?.toFixed(1) ?? "0.0";
