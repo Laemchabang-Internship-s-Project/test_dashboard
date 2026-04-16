@@ -56,7 +56,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                 <span class="text-xs">Telemedicine (รับบริการทางไกล)</span>
             </div>
-            <h2 class="text-3xl font-bold">10</h2>
+            <h2 id="telemed" class="text-3xl font-bold">-</h2>
         </div>
 
         <div class="stat-card bg-[#4b5563] text-white p-5 rounded-lg shadow-md">
@@ -64,7 +64,7 @@
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                 <span class="text-xs">บริการส่งยา (Drug Delivery)</span>
             </div>
-            <h2 class="text-3xl font-bold">6</h2>
+            <h2 class="text-3xl font-bold">-</h2>
         </div>
     </div>
 
@@ -121,9 +121,12 @@ function updateDashboard(data) {
     if (!data?.opd_clinics) return;
 
     const h = data.opd_clinics.header;
+    const s = data.system;
 
-    document.getElementById('opd-total').innerText = h?.opd_total ?? 0;
-    document.getElementById('walk-in').innerText = h?.walk_in ?? 0;
+    document.getElementById('opd-total').innerText = s?.total_OPD ?? 0;
+    document.getElementById('walk-in').innerText = s?.total_walkin ?? 0;
+    document.getElementById('telemed').innerText = s?.hos_telemed ?? 0;
+    
     document.getElementById('custom-opd-total').innerText = h?.custom_opd_total ?? 0;
     document.getElementById('waiting-screening').innerText = h?.waiting_screening ?? 0;
     document.getElementById('waiting-exam').innerText = h?.waiting_exam ?? 0;
