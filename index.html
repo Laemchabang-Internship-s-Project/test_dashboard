@@ -35,8 +35,8 @@
 
         <div class="flex justify-between items-center mb-6 bg-white p-4 rounded-xl shadow-sm border border-gray-100">
             <div>
-                <h1 class="text-xl font-bold text-gray-800">แดชบอร์ดสรุป</h1>
-                <p class="text-gray-400 text-xs">การให้บริการ OPD</p>
+                <h1 class="text-xl font-bold text-gray-800">แดชบอร์ดสรุปวาระเร่งด่วน</h1>
+                <p class="text-gray-400 text-xs">ส่วนที่ 2: พื้นที่รายละเอียด - การให้บริการ OPD</p>
             </div>
             <div class="text-right">
                 <p id="current-time" class="text-gray-600 font-semibold text-sm"></p>
@@ -47,13 +47,11 @@
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
             <div class="stat-card bg-[#1e40af] text-white p-5 rounded-lg shadow-md relative overflow-hidden">
                 <div class="flex items-center gap-3 opacity-80 mb-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
-                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                     <span class="text-xs">รวมผู้รับบริการทั้งหมด (OPD Total)</span>
                 </div>
@@ -63,7 +61,7 @@
             <div class="stat-card bg-[#15803d] text-white p-5 rounded-lg shadow-md">
                 <div class="flex items-center gap-3 opacity-80 mb-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                     </svg>
                     <span class="text-xs text-white">Walk-in (ผู้ป่วยเดินทางมาเอง)</span>
                 </div>
@@ -73,9 +71,7 @@
             <div class="stat-card bg-[#ea580c] text-white p-5 rounded-lg shadow-md">
                 <div class="flex items-center gap-3 opacity-80 mb-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z">
-                        </path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                     </svg>
                     <span class="text-xs">Telemedicine (รับบริการทางไกล)</span>
                 </div>
@@ -85,7 +81,7 @@
             <div class="stat-card bg-[#4b5563] text-white p-5 rounded-lg shadow-md">
                 <div class="flex items-center gap-3 opacity-80 mb-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
                     </svg>
                     <span class="text-xs">บริการส่งยา (Drug Delivery)</span>
                 </div>
@@ -93,131 +89,75 @@
             </div>
         </div>
 
-        <div class="flex flex-wrap justify-center gap-4 mb-8">
-
-            <div
-                class="flex-1 min-w-[150px] max-w-[200px] bg-[#1e3a8a] text-white p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[160px] text-center border-b-4 border-blue-400">
-                <p class="text-xs mb-3 font-light leading-relaxed">รวมผู้รับบริการ<br>ผู้ป่วยนอก</p>
-                <h3 id="custom-opd-total" class="text-4xl font-bold text-blue-200">-</h3>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+            <div class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
+                <p class="text-sm mb-2 font-light">รวมผู้รับบริการ<br>ผู้ป่วยนอก</p>
+                <h3 id="custom-opd-total" class="text-4xl font-bold">-</h3>
             </div>
-
-            <div
-                class="flex-1 min-w-[150px] max-w-[200px] bg-[#1e3a8a] text-white p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[160px] text-center border-b-4 border-yellow-400">
-                <p class="text-xs mb-3 font-light leading-relaxed">จำนวน ผู้รอรับบริการ<br>รอซักประวัติ</p>
-                <h3 id="waiting-screening" class="text-4xl font-bold text-yellow-400">-</h3>
+            <div class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
+                <p class="text-sm mb-2 font-light">จำนวน ผู้รอรับบริการ<br>รอซักประวัติ</p>
+                <h3 id="waiting-screening" class="text-4xl font-bold">-</h3>
             </div>
-
-            <div
-                class="flex-1 min-w-[150px] max-w-[200px] bg-[#1e3a8a] text-white p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[160px] text-center border-b-4 border-yellow-400">
-                <p class="text-xs mb-3 font-light leading-relaxed">จำนวน รอตรวจ</p>
-                <h3 id="waiting-exam" class="text-4xl font-bold text-yellow-400">-</h3>
+            <div class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
+                <p class="text-sm mb-2 font-light">จำนวน รอตรวจ</p>
+                <h3 id="waiting-exam" class="text-4xl font-bold">-</h3>
             </div>
-
-            <div
-                class="flex-1 min-w-[150px] max-w-[200px] bg-[#1e3a8a] text-white p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[160px] text-center border-b-4 border-blue-400">
-                <p class="text-xs mb-3 font-light leading-relaxed">จำนวน รอ Lab</p>
-                <h3 id="waiting-lab" class="text-4xl font-bold text-blue-300">-</h3>
+            <div class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
+                <p class="text-sm mb-2 font-light">จำนวน รอ lab</p>
+                <h3 id="waiting-lab" class="text-4xl font-bold">-</h3>
             </div>
-
-            <div
-                class="flex-1 min-w-[150px] max-w-[200px] bg-[#1e3a8a] text-white p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[160px] text-center border-b-4 border-blue-400">
-                <p class="text-xs mb-3 font-light leading-relaxed">จำนวน รอ X-ray</p>
-                <h3 id="waiting-xray" class="text-4xl font-bold text-blue-300">-</h3>
-            </div>
-
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-4 mb-8">
-            <div
-                class="flex-1 min-w-[150px] max-w-[200px] bg-[#1e3a8a] text-white p-6 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[160px] text-center border-b-4 border-blue-400">
-                <p class="text-xs mb-3 font-light leading-relaxed">จำนวนคนไข้กลับบ้าน</p>
-                <h3 id="go_home" class="text-4xl font-bold text-white">-</h3>
+            <div class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center min-h-[140px] text-center">
+                <p class="text-sm mb-2 font-light">จำนวน รอ x-ray</p>
+                <h3 id="waiting-xray" class="text-4xl font-bold">-</h3>
             </div>
         </div>
 
-        <div class="mb-6">
-            <div
-                class="bg-gradient-to-r from-red-600 to-red-400 text-white p-6 rounded-2xl shadow-lg flex items-center justify-between border-l-8 border-red-800">
-                <div>
-                    <p class="text-sm font-light text-emerald-100 mb-1 tracking-wide">คนไข้ทั่วไป</p>
-                    <h2 class="text-2xl md:text-3xl font-bold">เวลารอคอยเฉลี่ย จุดซักประวัติ</h2>
-                </div>
-                <div class="text-right flex items-center gap-4">
-                    <h3 class="text-5xl md:text-6xl font-bold text-white drop-shadow-md">
-                        <span id="avg-wait-screening">-</span>
-                    </h3>
-                    <div class="flex flex-col items-start opacity-90">
-                        <span class="text-xl font-bold">นาที</span>
-                        <span class="text-xs font-light">ต่อคน</span>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
+            
+            <div class="lg:col-span-5 bg-gradient-to-br from-teal-300 via-cyan-200 to-yellow-200 p-4 rounded-3xl shadow-md">
+                <div class="grid grid-cols-2 gap-4 h-full">
+                    <div class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
+                        <p class="text-xs font-light mb-1">ระยะเวลารอคอย<br>เฉลี่ยรวม</p>
+                        <h3 class="text-3xl font-bold text-teal-200"><span id="avg-wait-062">-</span><span class="text-sm ml-1 font-normal text-white">น.</span></h3>
                     </div>
-                    <svg class="w-12 h-12 ml-4 opacity-50 hidden md:block" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="mb-6">
-            <div
-                class="bg-gradient-to-r from-emerald-600 to-emerald-400 text-white p-6 rounded-2xl shadow-lg flex items-center justify-between border-l-8 border-emerald-800">
-                <div>
-                    <p class="text-sm font-light text-emerald-100 mb-1 tracking-wide">คนไข้นัดหมาย (Appointment)</p>
-                    <h2 class="text-2xl md:text-3xl font-bold">เวลารอคอยเฉลี่ย จุดซักประวัติ (นัด)</h2>
-                </div>
-                <div class="text-right flex items-center gap-4">
-                    <h3 class="text-5xl md:text-6xl font-bold text-white drop-shadow-md">
-                        <span id="avg-wait-062">-</span>
-                    </h3>
-                    <div class="flex flex-col items-start opacity-90">
-                        <span class="text-xl font-bold">นาที</span>
-                        <span class="text-xs font-light">ต่อคน</span>
+                    <div class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
+                        <p class="text-xs font-light mb-1">ระยะเวลารอคอย<br>ซักประวัติ</p>
+                        <h3 class="text-3xl font-bold text-yellow-300"><span id="avg-wait-screening">-</span><span class="text-sm ml-1 font-normal text-white">น.</span></h3>
                     </div>
-                    <svg class="w-12 h-12 ml-4 opacity-50 hidden md:block" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-6">
-            <div
-                class="bg-gradient-to-r from-blue-600 to-blue-400 text-white p-6 rounded-2xl shadow-lg flex items-center justify-between border-l-8 border-blue-800">
-                <div>
-                    <p class="text-sm font-light text-blue-100 mb-1 tracking-wide">ภาพรวมทุกแผนก</p>
-                    <h2 class="text-2xl md:text-3xl font-bold">เวลารอคอยเฉลี่ย รอตรวจ</h2>
-                </div>
-                <div class="text-right flex items-center gap-4">
-                    <h3 class="text-5xl md:text-6xl font-bold text-white drop-shadow-md">
-                        <span id="avg-wait-exam-total">-</span>
-                    </h3>
-                    <div class="flex flex-col items-start opacity-90">
-                        <span class="text-xl font-bold">นาที</span>
-                        <span class="text-xs font-light">ต่อคน</span>
+                    <div class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
+                        <p class="text-xs font-light mb-1">ระยะเวลารอคอย<br>รอตรวจ</p>
+                        <h3 class="text-3xl font-bold text-cyan-300"><span id="avg-wait-exam-total">-</span><span class="text-sm ml-1 font-normal text-white">น.</span></h3>
                     </div>
-                    <svg class="w-12 h-12 ml-4 opacity-50 hidden md:block" fill="none" stroke="currentColor"
-                        viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
+                    <div class="bg-[#2c4c82] text-white rounded-2xl flex flex-col items-center justify-center p-4 min-h-[120px] text-center shadow-sm">
+                        <p class="text-xs font-light mb-1">ระยะเวลารอคอย<br>รอรับยา</p>
+                        <h3 class="text-3xl font-bold text-emerald-300"><span id="avg-wait-pharmacy">-</span><span class="text-sm ml-1 font-normal text-white">น.</span></h3>
+                    </div>
                 </div>
             </div>
-        </div>
 
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="flex flex-col">
+                    <div class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center flex-grow text-center">
+                        <p class="text-sm mb-2 font-light">จำนวน รอรับยา</p>
+                        <h3 id="waiting-pharmacy" class="text-4xl font-bold">-</h3>
+                    </div>
+                </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-white p-4 rounded-xl shadow-sm flex justify-between items-center border-l-4 border-blue-500">
-                <span class="text-gray-500 font-bold">ยอด Lab วันนี้</span>
-                <span id="lab-all" class="text-xl font-bold">-</span>
+                <div class="flex flex-col">
+                    <div class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center flex-grow text-center">
+                        <p class="text-sm mb-2 font-light">จำนวน รอจ่ายเงิน</p>
+                        <h3 id="waiting-finance" class="text-4xl font-bold">-</h3>
+                    </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <div class="bg-[#1e3a8a] text-white p-4 rounded-2xl shadow-lg flex flex-col items-center justify-center flex-grow text-center">
+                        <p class="text-sm mb-2 font-light">จำนวน กลับบ้าน</p>
+                        <h3 id="go_home" class="text-4xl font-bold">-</h3>
+                    </div>
+                </div>
             </div>
-            <div class="bg-white p-4 rounded-xl shadow-sm flex justify-between items-center border-l-4 border-blue-500">
-                <span class="text-gray-500 font-bold">ยอด X-Ray วันนี้</span>
-                <span id="xray-all" class="text-xl font-bold">-</span>
-            </div>
+
         </div>
 
     </div>
@@ -236,33 +176,36 @@
             const s = data.system;
             const rooms = data.opd_clinics.rooms || [];
 
-            // ดึงเวลารอคอยเฉลี่ยจากห้อง 010 (จุดซักประวัติผู้ป่วยนอก)
+            // ดึงเวลารอคอยเฉลี่ยจากห้อง
             const room010 = rooms.find(r => r.room_code === '010');
             const room062 = rooms.find(r => r.room_code === '062');
-            const avgWaitScreening = room010 ? room010.avg_wait_minutes : 0;
 
-            // อัปเดตตัวเลขรวม
+            // อัปเดตตัวเลขรวม (แถว 1)
             document.getElementById('opd-total').innerText = s?.total_OPD ?? 0;
             document.getElementById('walk-in').innerText = s?.total_walkin ?? 0;
             document.getElementById('telemed').innerText = s?.hos_telemed ?? 0;
 
-            // อัปเดตกล่องสีน้ำเงิน (แถวกลาง)
+            // อัปเดตกล่องสีน้ำเงิน (แถว 2)
             document.getElementById('custom-opd-total').innerText = h?.custom_opd_total ?? 0;
             document.getElementById('waiting-screening').innerText = h?.waiting_screening ?? 0;
             document.getElementById('waiting-exam').innerText = h?.waiting_exam ?? 0;
             document.getElementById('waiting-lab').innerText = data?.technical_services?.lab?.waiting ?? 0;
             document.getElementById('waiting-xray').innerText = data?.technical_services?.xray?.waiting ?? 0;
 
+            // โซนขวาล่าง: จำนวนรอรับยา จ่ายเงิน กลับบ้าน
+            document.getElementById('waiting-pharmacy').innerText = data?.technical_services?.pharmacy?.waiting ?? 0;
+            document.getElementById('waiting-finance').innerText = data?.technical_services?.finance?.waiting ?? 0;
             document.getElementById('go_home').innerText = s?.hos_go_home ?? 0;
 
-            //waiting
+            // โซนซ้ายล่าง: เวลารอคอย
             document.getElementById('avg-wait-screening').innerText = room010?.avg_wait_minutes?.toFixed(1) ?? "0.0";
-            document.getElementById('avg-wait-062').innerText = room062?.avg_wait_minutes?.toFixed(1) ?? "0.0";
             document.getElementById('avg-wait-exam-total').innerText = data.summary?.avg_wait_examination?.toFixed(1) ?? "0.0";
-
-            // อัปเดตกล่องด้านล่าง
-            document.getElementById('lab-all').innerText = data?.technical_services?.lab?.all ?? 0;
-            document.getElementById('xray-all').innerText = data?.technical_services?.xray?.all ?? 0;
+            
+            // หมายเหตุ: ใช้ 062 มาแสดงในช่อง "เฉลี่ยรวม" ไว้ก่อน ถ้ามีค่าเฉลี่ยตัวอื่นสามารถมาเปลี่ยน ID ตรงนี้ได้
+            document.getElementById('avg-wait-062').innerText = room062?.avg_wait_minutes?.toFixed(1) ?? "0.0";
+            
+            // รอรับยายังไม่มี API รอเวลา เลยใส่เป็น 0 ไว้ก่อน
+            document.getElementById('avg-wait-pharmacy').innerText = "0.0";
         }
 
         /* =========================
